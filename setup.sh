@@ -24,6 +24,8 @@ native-packages() {
   #
   # NOTE: we get R 3.0.2 on Trusty.
   sudo apt-get install build-essential gfortran libblas-dev r-base python-dev graphviz
+  # this package is required as well: 
+  sudo apt-get install libssl-dev
 }
 
 r-packages() {
@@ -41,10 +43,11 @@ r-packages() {
 install-plyr-with-friends() {
   mkdir -p _tmp
   wget --directory _tmp \
-    http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.11.4.tar.gz
+    https://cran.r-project.org/src/contrib/Rcpp_1.0.6.tar.gz
+    # http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.12.12.tar.gz
   wget --directory _tmp \
     http://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.1.tar.gz
-  sudo R CMD INSTALL _tmp/Rcpp_0.11.4.tar.gz
+  sudo R CMD INSTALL _tmp/Rcpp_1.0.6.tar.gz
   sudo R CMD INSTALL _tmp/plyr_1.8.1.tar.gz 
   sudo R -e \
     'install.packages(c("reshape2", "ggplot2", "data.table"), repos="http://cran.rstudio.com/")'
