@@ -205,6 +205,16 @@ _run-one-instance() {
         < $true_values \
         > "$instance_dir/case_reports.csv"
       ;;
+
+    javascript)
+      banner "Running WRAPPOR client"
+
+      CWD=$PWD
+      cd ../wrappor/sim
+      echo "$num_bits $num_hashes $num_cohorts $p $q $f $CWD/$true_values $CWD/$instance_dir/case_reports.csv"
+      time ts-node sim.ts $num_bits $num_hashes $num_cohorts $p $q $f $CWD/$true_values $CWD/$instance_dir/case_reports.csv
+      cd $CWD
+      ;;
       
     cpp)
       banner "Running RAPPOR C++ client (see rappor_sim.log for errors)"

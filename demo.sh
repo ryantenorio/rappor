@@ -47,6 +47,10 @@ quick-python() {
   ./regtest.sh run-seq '^demo3' python
 }
 
+quick-js() {  
+  ./regtest.sh run-seq '^demo3' javascript
+}
+
 quick-cpp() {
   # For now we build it first.  Don't want to build it in parallel.
   ./build.sh cpp-client
@@ -56,6 +60,7 @@ quick-cpp() {
 
 quick() {
   quick-python
+  quick-js
   quick-cpp
 }
 
