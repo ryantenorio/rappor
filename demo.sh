@@ -44,11 +44,13 @@ rappor-sim-profile() {
 }
 
 quick-python() {  
-  ./regtest.sh run-seq '^demo3' python
+  ./regtest.sh run-seq '^demo[0-9]' python
 }
 
 quick-js() {  
-  ./regtest.sh run-seq '^demo3' javascript
+  ./regtest.sh run-all javascript
+  # ./regtest.sh run-seq '^demo2' javascript
+  # ./regtest.sh run-seq '^demo3' javascript
 }
 
 quick-cpp() {

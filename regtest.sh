@@ -406,7 +406,7 @@ run() {
 # Run tests in parallel (7+ minutes on 8 cores)
 run-all() {
   log "Running all tests. Can take a while."
-  time _run-tests $REGTEST_SPEC '^r-' T cpp
+  time _run-tests $REGTEST_SPEC '^r-' F javascript
 }
 
 run-user() {

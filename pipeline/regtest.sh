@@ -113,7 +113,7 @@ create-reports() {
 
     # TODO: Change params for each day.
     cp --verbose \
-      ../bin/_tmp/reports.csv _tmp/reports/$date/m_reports.csv
+      ../bin/_tmp/decode-assoc-test/input/reports.csv _tmp/reports/$date/m_reports.csv
   done
 }
 
@@ -142,7 +142,7 @@ assoc-job() {
   # decode-many calls decode_assoc.R, which expects this schema in the 'config'
   # dir now.  TODO: adjust this.
   cp --verbose _tmp/metadata/rappor-vars.csv $job_dir/config
-  cp --verbose ../bin/_tmp/m_params.csv $job_dir/config
+  cp --verbose ../bin/_tmp/decode-assoc-test/input/m_params.csv $job_dir/config
 
   ./assoc.sh decode-many $job_dir $spec_list
   ./assoc.sh combine-and-render-html _tmp $job_dir
@@ -152,7 +152,7 @@ assoc-job() {
 # from there.
 assoc() {
   create-reports
-  cp --verbose ../bin/_tmp/domain_map.csv _tmp/maps
+  cp --verbose ../bin/_tmp/decode-assoc-test/input/domain_map.csv _tmp/maps
 
   assoc-job smoke1-assoc '2015-12-01'  # one day
   assoc-job smoke2-assoc '2015-12-0[23]'  # two days
